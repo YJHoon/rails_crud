@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>보기</h1>
+        <%= link_to "수정", edit_post_path(@post) %>
+    <%= link_to "삭제", post_path(@post), method: :DELETE %>
+    <h4>글의 제목 : <%= @post.title %></h4>
+    <p>글의 내용 : <%= @post.content %></p>
+   
+
+     <form action="/posts/comment_create/<%= @post.id %>" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" name="content" placeholder="댓글 작성">
+        <span class="input-group-btn"></span>
+        <button class="btn btn-default" type="submit">
+          작성
+        </button>
+ 
+      </div>
+    </form>
+    
+    <div class="panel-footer">
+      <% @post.comments.each do |comment| %>
+        <%= comment.content %>
+        <%= link_to "삭제", post_path(comment), method: :DELETE %><br>
+      <% end %>
+    </div>

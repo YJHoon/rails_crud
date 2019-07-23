@@ -1,0 +1,18 @@
+<div  class="container">
+  <%= link_to "글 생성하기", new_post_path %>
+  <h1>글 목록</h1>
+
+  <% @posts.each do |post| %>
+    <div class="panel-heading">
+      <h4>글의 제목 : <%= post.title %></h4>  
+    </div>
+    <div class="panel-body">
+      <p>글의 내용 : <%= post.content %></p>  
+    </div>
+    <%= link_to "자세히", post_path(post) %>
+  
+
+  
+  <% end %>  
+  
+</div>
